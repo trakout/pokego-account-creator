@@ -2,6 +2,7 @@
 Creates PTC accounts.
 - Two parts: Signup & Email Polling for verification
 - Scrapes proxies and checks them prior to use (currently disabled, need a better source for a larger volume of stable proxies)
+- Stores accounts using leveldb
 - Uses NightmareJS
 
 
