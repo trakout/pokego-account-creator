@@ -1,0 +1,11 @@
+{
+  "email": {
+    "user": "user@gmail.com",
+    "pass": "",
+    "suffix": "catchall_email_suffix.tld"
+  },
+  "debug": {
+    "emailVerify": false,
+    "signup": false
+  }
+}
