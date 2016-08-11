@@ -1,0 +1,7 @@
+node_modules/
+*.sql
+config.json
+.DS_Store
+.git
+/legacy/*
+pokego-*
