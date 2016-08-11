@@ -1,7 +1,7 @@
 {
   "name": "pokego-account-creator",
   "version": "1.0.0",
-  "description": "Creates PTC accounts like nobody's business",
+  "description": "Creates PTC accounts, using freshly-scraped proxies (currently disabled).",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

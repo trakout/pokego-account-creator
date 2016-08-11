@@ -77,12 +77,14 @@ var putVerified = function(data) {
 
 
 var listVerified = function() {
+  var count = 0;
   console.log('The following users have been saved:')
   vdb.createReadStream()
     .on('data', function (data) {
     // console.log(data.key, '=', data.value)
     // console.log(data.key + ' => ' + JSON.stringify(data.value));
     console.log(data.key);
+    count++;
   })
   .on('error', function (err) {
     console.log('Oh my!', err)
@@ -92,6 +94,7 @@ var listVerified = function() {
   })
   .on('end', function () {
     console.log('Stream ended')
+    console.log('User Count:', count);
   })
 };
 

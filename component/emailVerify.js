@@ -3,6 +3,7 @@ var q = require('q');
 
 var db = require('./db');
 var proxy = require('./proxyScraper');
+var signup = require('./signup');
 var config = require('../config');
 var nightmare = null;
 var pollCount = 0;
@@ -172,6 +173,19 @@ var verifyExternal = function(url, userIndex, newProxy) {
 
 var poll = function(nightmare) {
   // polling = true;
+  if (pollCount > 20) {
+    pollCount = 0;
+    signup.ptcSignup()
+      .then(function(res) {
+        console.log('====== RUNNING AGAIN: artificial pollcount increase ======');
+        pollCount = 11;
+      }, function(err) {
+        console.log('Signup Worker err:', err);
+        console.log('====== RUNNING AGAIN: error handle from poll ======');
+        pollCount = 11;
+      });
+  }
+
   var defer = q.defer();
   console.log('Polling Email, pollCount:', pollCount);
 

@@ -35,7 +35,7 @@ var ptcSignup = function(data) {
   var ptcDefer = q.defer();
 
   var randWait = function() {
-    return Math.floor(Math.random() * 1028) + 998;
+    return 1500;
   }
 
 
@@ -86,9 +86,9 @@ var ptcSignup = function(data) {
           //   'proxy-server': res.ip + ':' + res.port,
           //   'ignore-certificate-errors': true
           // },
-          gotoTimeout: 10000,
-          waitTimeout: 10000,
-          loadTimeout: 15000
+          gotoTimeout: 10000
+          // waitTimeout: 10000,
+          // loadTimeout: 15000
         });
 
 
@@ -96,7 +96,7 @@ var ptcSignup = function(data) {
           .goto('https://club.pokemon.com/')
           .wait(1000)
           .cookies.clear()
-          .wait(1000)
+          .wait(5000)
 
           .goto('https://club.pokemon.com/us/pokemon-trainer-club/sign-up/')
           .exists('.subtitle-404')
@@ -119,8 +119,10 @@ var ptcSignup = function(data) {
                 .wait('form.form-inner.verify-age-form input[type="submit"]')
                 .click('form.form-inner.verify-age-form input[type="submit"]')
                 .wait(randWait())
+                .wait(4000)
 
                 .wait('input#id_username')
+                .wait(randWait())
                 .type('input#id_username', user.username)
                 .wait(randWait())
                 .type('input#id_password', user.password)
@@ -143,6 +145,7 @@ var ptcSignup = function(data) {
                 .evaluate(function(){
                   return document.title;
                 })
+                .wait(randWait())
                 .end()
                 .then(function (result) {
                   console.log('signup success:', result)
